@@ -3,8 +3,8 @@ package algorithm;
 import java.util.Date;
 
 public class Person {
-	public String name;
-	public Date birthDate;
+	private String name;
+	private Date birthDate;
 	
 	public Person(String name, Date birthDate) {
 		this.name = name;
