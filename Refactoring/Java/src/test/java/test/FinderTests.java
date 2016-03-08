@@ -35,7 +35,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Empty_Results_When_Given_Empty_List() {
+	public void emptyListGivesEmptyResults() {
 		List<Person> list = new ArrayList<Person>();
 		Finder finder = new Finder(list);
 
@@ -46,7 +46,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Empty_Results_When_Given_One_Person() {
+	public void onePersonGivesEmptyResults() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 
@@ -59,7 +59,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Closest_Two_For_Two_People() {
+	public void twoPeopleGivesClosestTwo() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(greg);
@@ -72,7 +72,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Furthest_Two_For_Two_People() {
+	public void twoPeopleGivesFurthestTwo() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(mike);
 		list.add(greg);
@@ -86,7 +86,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Furthest_Two_For_Four_People() {
+	public void fourPeopleGivesFurthestTwo() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(sarah);
@@ -101,7 +101,7 @@ public class FinderTests {
 	}
 
 	@Test
-	public void Returns_Closest_Two_For_Four_People() {
+	public void fourPeopleGivesClosestTwo() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(sarah);
