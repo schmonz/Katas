@@ -15,6 +15,14 @@ import algorithm.Person;
 public class FinderTests {
 
 	private Person sue, greg, sarah, mike;
+	
+	private List<Person> makeList(Person...persons) {
+		List<Person> list = new ArrayList<Person>();
+		for (Person person : persons) {
+			list.add(person);
+		}
+		return list;
+	}
 
 	@Before
 	public void setup() {
@@ -26,7 +34,7 @@ public class FinderTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		List<Person> list = new ArrayList<Person>();
+		List<Person> list = makeList();
 		
 		F result = new Finder(list).find(FT.One);
 		
@@ -36,8 +44,7 @@ public class FinderTests {
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(sue);
+		List<Person> list = makeList(sue);
 
 		F result = new Finder(list).find(FT.One);
 
@@ -47,9 +54,7 @@ public class FinderTests {
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(sue);
-		list.add(greg);
+		List<Person> list = makeList(sue, greg);
 		
 		F result = new Finder(list).find(FT.One);
 
@@ -59,9 +64,7 @@ public class FinderTests {
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(mike);
-		list.add(greg);
+		List<Person> list = makeList(mike, greg);
 
 		F result = new Finder(list).find(FT.Two);
 
@@ -71,11 +74,7 @@ public class FinderTests {
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(sue);
-		list.add(sarah);
-		list.add(mike);
-		list.add(greg);
+		List<Person> list = makeList(sue, sarah, mike, greg);
 		
 		F result = new Finder(list).find(FT.Two);
 
@@ -85,11 +84,7 @@ public class FinderTests {
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		List<Person> list = new ArrayList<Person>();
-		list.add(sue);
-		list.add(sarah);
-		list.add(mike);
-		list.add(greg);
+		List<Person> list = makeList(sue, sarah, mike, greg);
 
 		F result = new Finder(list).find(FT.One);
 
