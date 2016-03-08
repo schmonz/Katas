@@ -2,6 +2,7 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,16 +21,24 @@ public class FinderTests {
 	Thing sarah = new Thing();
 	Thing mike = new Thing();
 
+	private Date getDateFor(int year, int month, int day) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 1900 + year);
+		cal.set(Calendar.MONTH, month);
+		cal.set(Calendar.DAY_OF_MONTH, day);
+		return cal.getTime();
+	}
+
 	@Before
 	public void setup() {
 		sue.name = "Sue";
-		sue.birthDate = new Date(50, 0, 1);
+		sue.birthDate = getDateFor(50, 0, 1);
 		greg.name = "Greg";
-		greg.birthDate = new Date(52, 5, 1);
+		greg.birthDate = getDateFor(52, 5, 1);
 		sarah.name = "Sarah";
-		sarah.birthDate = new Date(82, 0, 1);
+		sarah.birthDate = getDateFor(82, 0, 1);
 		mike.name = "Mike";
-		mike.birthDate = new Date(79, 0, 1);
+		mike.birthDate = getDateFor(79, 0, 1);
 	}
 
 	@Test
