@@ -28,10 +28,10 @@ public class FinderTests {
 
 	@Before
 	public void setup() {
-		sue = new Person("Sue", getDateFor(50, 0, 1));
-		greg = new Person("Greg", getDateFor(52, 5, 1));
-		sarah = new Person("Sarah", getDateFor(82, 0, 1));
-		mike = new Person("Mike", getDateFor(79, 0, 1));
+		sue = new Person(getDateFor(50, 0, 1));
+		greg = new Person(getDateFor(52, 5, 1));
+		sarah = new Person(getDateFor(82, 0, 1));
+		mike = new Person(getDateFor(79, 0, 1));
 	}
 
 	@Test
