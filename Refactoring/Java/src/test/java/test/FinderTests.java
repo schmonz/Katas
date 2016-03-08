@@ -16,10 +16,7 @@ import algorithm.Thing;
 
 public class FinderTests {
 
-	Thing sue = new Thing();
-	Thing greg = new Thing();
-	Thing sarah = new Thing();
-	Thing mike = new Thing();
+	Thing sue, greg, sarah, mike;
 
 	private Date getDateFor(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
@@ -29,16 +26,19 @@ public class FinderTests {
 		return cal.getTime();
 	}
 
+	private Thing getThingFor(String name, Date birthDate) {
+		Thing thing = new Thing();
+		thing.setName(name);
+		thing.setBirthDate(birthDate);
+		return thing;
+	}
+
 	@Before
 	public void setup() {
-		sue.name = "Sue";
-		sue.birthDate = getDateFor(50, 0, 1);
-		greg.name = "Greg";
-		greg.birthDate = getDateFor(52, 5, 1);
-		sarah.name = "Sarah";
-		sarah.birthDate = getDateFor(82, 0, 1);
-		mike.name = "Mike";
-		mike.birthDate = getDateFor(79, 0, 1);
+		sue = getThingFor("Sue", getDateFor(50, 0, 1));
+		greg = getThingFor("Greg", getDateFor(52, 5, 1));
+		sarah = getThingFor("Sarah", getDateFor(82, 0, 1));
+		mike = getThingFor("Mike", getDateFor(79, 0, 1));
 	}
 
 	@Test
