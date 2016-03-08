@@ -27,10 +27,7 @@ public class FinderTests {
 	}
 
 	private Person getPersonFor(String name, Date birthDate) {
-		Person person = new Person();
-		person.setName(name);
-		person.setBirthDate(birthDate);
-		return person;
+		return new Person(name, birthDate);
 	}
 
 	@Before

@@ -5,6 +5,11 @@ import java.util.Date;
 public class Person {
 	public String name;
 	public Date birthDate;
+	
+	public Person(String name, Date birthDate) {
+		this.name = name;
+		this.birthDate = birthDate;
+	}
 
 	public String getName() {
 		return name;
