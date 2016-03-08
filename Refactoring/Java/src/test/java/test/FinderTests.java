@@ -16,7 +16,7 @@ import algorithm.Person;
 
 public class FinderTests {
 
-	Person sue, greg, sarah, mike;
+	private Person sue, greg, sarah, mike;
 
 	private Date getDateFor(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
