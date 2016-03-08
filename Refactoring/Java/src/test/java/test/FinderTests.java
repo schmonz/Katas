@@ -26,16 +26,12 @@ public class FinderTests {
 		return cal.getTime();
 	}
 
-	private Person getPersonFor(String name, Date birthDate) {
-		return new Person(name, birthDate);
-	}
-
 	@Before
 	public void setup() {
-		sue = getPersonFor("Sue", getDateFor(50, 0, 1));
-		greg = getPersonFor("Greg", getDateFor(52, 5, 1));
-		sarah = getPersonFor("Sarah", getDateFor(82, 0, 1));
-		mike = getPersonFor("Mike", getDateFor(79, 0, 1));
+		sue = new Person("Sue", getDateFor(50, 0, 1));
+		greg = new Person("Greg", getDateFor(52, 5, 1));
+		sarah = new Person("Sarah", getDateFor(82, 0, 1));
+		mike = new Person("Mike", getDateFor(79, 0, 1));
 	}
 
 	@Test
