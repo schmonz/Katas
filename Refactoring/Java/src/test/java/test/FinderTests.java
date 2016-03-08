@@ -26,19 +26,19 @@ public class FinderTests {
 		return cal.getTime();
 	}
 
-	private Person getThingFor(String name, Date birthDate) {
-		Person thing = new Person();
-		thing.setName(name);
-		thing.setBirthDate(birthDate);
-		return thing;
+	private Person getPersonFor(String name, Date birthDate) {
+		Person person = new Person();
+		person.setName(name);
+		person.setBirthDate(birthDate);
+		return person;
 	}
 
 	@Before
 	public void setup() {
-		sue = getThingFor("Sue", getDateFor(50, 0, 1));
-		greg = getThingFor("Greg", getDateFor(52, 5, 1));
-		sarah = getThingFor("Sarah", getDateFor(82, 0, 1));
-		mike = getThingFor("Mike", getDateFor(79, 0, 1));
+		sue = getPersonFor("Sue", getDateFor(50, 0, 1));
+		greg = getPersonFor("Greg", getDateFor(52, 5, 1));
+		sarah = getPersonFor("Sarah", getDateFor(82, 0, 1));
+		mike = getPersonFor("Mike", getDateFor(79, 0, 1));
 	}
 
 	@Test
