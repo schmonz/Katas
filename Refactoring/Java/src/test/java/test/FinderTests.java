@@ -12,11 +12,11 @@ import org.junit.Test;
 import algorithm.F;
 import algorithm.FT;
 import algorithm.Finder;
-import algorithm.Thing;
+import algorithm.Person;
 
 public class FinderTests {
 
-	Thing sue, greg, sarah, mike;
+	Person sue, greg, sarah, mike;
 
 	private Date getDateFor(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
@@ -26,8 +26,8 @@ public class FinderTests {
 		return cal.getTime();
 	}
 
-	private Thing getThingFor(String name, Date birthDate) {
-		Thing thing = new Thing();
+	private Person getThingFor(String name, Date birthDate) {
+		Person thing = new Person();
 		thing.setName(name);
 		thing.setBirthDate(birthDate);
 		return thing;
@@ -43,7 +43,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Empty_Results_When_Given_Empty_List() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		Finder finder = new Finder(list);
 
 		F result = finder.Find(FT.One);
@@ -54,7 +54,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Empty_Results_When_Given_One_Person() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 
 		Finder finder = new Finder(list);
@@ -67,7 +67,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Closest_Two_For_Two_People() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(greg);
 		Finder finder = new Finder(list);
@@ -80,7 +80,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Furthest_Two_For_Two_People() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		list.add(mike);
 		list.add(greg);
 
@@ -94,7 +94,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Furthest_Two_For_Four_People() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(sarah);
 		list.add(mike);
@@ -109,7 +109,7 @@ public class FinderTests {
 
 	@Test
 	public void Returns_Closest_Two_For_Four_People() {
-		List<Thing> list = new ArrayList<Thing>();
+		List<Person> list = new ArrayList<Person>();
 		list.add(sue);
 		list.add(sarah);
 		list.add(mike);
