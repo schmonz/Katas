@@ -18,10 +18,10 @@ public class FinderTests {
 
 	@Before
 	public void setup() {
-		sue = new Person(50, 0, 1);
-		greg = new Person(52, 5, 1);
-		sarah = new Person(82, 0, 1);
-		mike = new Person(79, 0, 1);
+		sue		= new Person(1950, 1, 1);
+		greg	= new Person(1952, 6, 1);
+		sarah	= new Person(1982, 1, 1);
+		mike	= new Person(1979, 1, 1);
 	}
 
 	@Test
