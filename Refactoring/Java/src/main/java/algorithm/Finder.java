@@ -9,7 +9,7 @@ public class Finder {
 		listOfPersons = p;
 	}
 
-	public PersonPair find(FT ft) {
+	public PersonPair find(FindDistance ft) {
 		List<PersonPair> tr = new ArrayList<PersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
@@ -34,13 +34,13 @@ public class Finder {
 		PersonPair answer = tr.get(0);
 		for (PersonPair result : tr) {
 			switch (ft) {
-				case One :
+				case CLOSEST :
 					if (result.D < answer.D) {
 						answer = result;
 					}
 					break;
 
-				case Two :
+				case FURTHEST :
 					if (result.D > answer.D) {
 						answer = result;
 					}

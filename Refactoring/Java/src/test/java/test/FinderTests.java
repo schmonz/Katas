@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algorithm.PersonPair;
-import algorithm.FT;
+import algorithm.FindDistance;
 import algorithm.Finder;
 import algorithm.Person;
 
@@ -40,42 +40,42 @@ public class FinderTests {
 	@Test
 	public void emptyListGivesEmptyResults() {
 		List<Person> list = makeList();
-		PersonPair result = new Finder(list).find(FT.One);
+		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
 		List<Person> list = makeList(sue);
-		PersonPair result = new Finder(list).find(FT.One);
+		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
 		List<Person> list = makeList(sue, greg);
-		PersonPair result = new Finder(list).find(FT.One);
+		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
 		List<Person> list = makeList(mike, greg);
-		PersonPair result = new Finder(list).find(FT.Two);
+		PersonPair result = new Finder(list).find(FindDistance.FURTHEST);
 		assertResultContainsTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
 		List<Person> list = makeList(sue, sarah, mike, greg);
-		PersonPair result = new Finder(list).find(FT.Two);
+		PersonPair result = new Finder(list).find(FindDistance.FURTHEST);
 		assertResultContainsTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
 		List<Person> list = makeList(sue, sarah, mike, greg);
-		PersonPair result = new Finder(list).find(FT.One);
+		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
