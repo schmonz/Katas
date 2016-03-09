@@ -25,8 +25,8 @@ public class FinderTests {
 	}
 	
 	private void assertResultContainsTheseTwoPeople(PersonPair result, Person a, Person b) {
-		assertEquals(a, result.personOne);
-		assertEquals(b, result.personTwo);
+		assertEquals(a, result.older);
+		assertEquals(b, result.sameOrYounger);
 	}
 
 	@Before

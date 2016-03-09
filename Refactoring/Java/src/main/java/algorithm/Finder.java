@@ -9,16 +9,16 @@ public class Finder {
 		this.listOfPersons = listOfPersons;
 	}
 	
-	private PersonPair putThesePersonsInSomeOrder(Person aPerson, Person anotherPerson) {
+	private PersonPair olderFollowedBySameOrYounger(Person aPerson, Person anotherPerson) {
 		PersonPair personPair = new PersonPair();
 		if (aPerson.getBirthTime() < anotherPerson.getBirthTime()) {
-			personPair.personOne = aPerson;
-			personPair.personTwo = anotherPerson;
+			personPair.older = aPerson;
+			personPair.sameOrYounger = anotherPerson;
 		} else {
-			personPair.personOne = anotherPerson;
-			personPair.personTwo = aPerson;
+			personPair.older = anotherPerson;
+			personPair.sameOrYounger = aPerson;
 		}
-		personPair.millisecondsBetweenDates = personPair.personTwo.getBirthTime() - personPair.personOne.getBirthTime();
+		personPair.millisecondsBetweenBirthDates = personPair.sameOrYounger.getBirthTime() - personPair.older.getBirthTime();
 		return personPair;
 	}
 
@@ -27,8 +27,7 @@ public class Finder {
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				PersonPair thisPersonPair = putThesePersonsInSomeOrder(listOfPersons.get(i), listOfPersons.get(j));
-				listOfPairsOfPersons.add(thisPersonPair);
+				listOfPairsOfPersons.add(olderFollowedBySameOrYounger(listOfPersons.get(i), listOfPersons.get(j)));
 			}
 		}
 
@@ -40,13 +39,13 @@ public class Finder {
 		for (PersonPair result : listOfPairsOfPersons) {
 			switch (findDistanceThingy) {
 				case CLOSEST :
-					if (result.millisecondsBetweenDates < answer.millisecondsBetweenDates) {
+					if (result.millisecondsBetweenBirthDates < answer.millisecondsBetweenBirthDates) {
 						answer = result;
 					}
 					break;
 
 				case FURTHEST :
-					if (result.millisecondsBetweenDates > answer.millisecondsBetweenDates) {
+					if (result.millisecondsBetweenBirthDates > answer.millisecondsBetweenBirthDates) {
 						answer = result;
 					}
 					break;
