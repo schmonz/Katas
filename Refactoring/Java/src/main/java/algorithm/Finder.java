@@ -16,13 +16,13 @@ public class Finder {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
 				PersonPair r = new PersonPair();
 				if (listOfPersons.get(i).getBirthDate().getTime() < listOfPersons.get(j).getBirthDate().getTime()) {
-					r.P1 = listOfPersons.get(i);
-					r.P2 = listOfPersons.get(j);
+					r.personOne = listOfPersons.get(i);
+					r.personTwo = listOfPersons.get(j);
 				} else {
-					r.P1 = listOfPersons.get(j);
-					r.P2 = listOfPersons.get(i);
+					r.personOne = listOfPersons.get(j);
+					r.personTwo = listOfPersons.get(i);
 				}
-				r.D = r.P2.getBirthDate().getTime() - r.P1.getBirthDate().getTime();
+				r.millisecondsBetweenDates = r.personTwo.getBirthDate().getTime() - r.personOne.getBirthDate().getTime();
 				tr.add(r);
 			}
 		}
@@ -35,13 +35,13 @@ public class Finder {
 		for (PersonPair result : tr) {
 			switch (ft) {
 				case CLOSEST :
-					if (result.D < answer.D) {
+					if (result.millisecondsBetweenDates < answer.millisecondsBetweenDates) {
 						answer = result;
 					}
 					break;
 
 				case FURTHEST :
-					if (result.D > answer.D) {
+					if (result.millisecondsBetweenDates > answer.millisecondsBetweenDates) {
 						answer = result;
 					}
 					break;

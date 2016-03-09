@@ -1,6 +1,6 @@
 package algorithm;
 public class PersonPair {
-	public Person P1;
-	public Person P2;
-	public long D;
+	public Person personOne;
+	public Person personTwo;
+	public long millisecondsBetweenDates;
 }
