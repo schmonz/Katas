@@ -9,25 +9,12 @@ public class Finder {
 		this.listOfPersons = listOfPersons;
 	}
 	
-	private PersonPair olderFollowedBySameOrYounger(Person aPerson, Person anotherPerson) {
-		PersonPair personPair = new PersonPair();
-		if (aPerson.getBirthTime() < anotherPerson.getBirthTime()) {
-			personPair.older = aPerson;
-			personPair.sameOrYounger = anotherPerson;
-		} else {
-			personPair.older = anotherPerson;
-			personPair.sameOrYounger = aPerson;
-		}
-		personPair.millisecondsBetweenBirthDates = personPair.sameOrYounger.getBirthTime() - personPair.older.getBirthTime();
-		return personPair;
-	}
-
 	public PersonPair find(FindDistance findDistanceThingy) {
 		List<PersonPair> listOfPairsOfPersons = new ArrayList<PersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				listOfPairsOfPersons.add(olderFollowedBySameOrYounger(listOfPersons.get(i), listOfPersons.get(j)));
+				listOfPairsOfPersons.add(new PersonPair(listOfPersons.get(i), listOfPersons.get(j)));
 			}
 		}
 
