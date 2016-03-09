@@ -26,13 +26,13 @@ public class Finder {
 		for (PersonPair result : listOfPairsOfPersons) {
 			switch (findDistanceThingy) {
 				case CLOSEST :
-					if (result.millisecondsBetweenBirthDates < answer.millisecondsBetweenBirthDates) {
+					if (result.getDateDifference() < answer.getDateDifference()) {
 						answer = result;
 					}
 					break;
 
 				case FURTHEST :
-					if (result.millisecondsBetweenBirthDates > answer.millisecondsBetweenBirthDates) {
+					if (result.getDateDifference() > answer.getDateDifference()) {
 						answer = result;
 					}
 					break;

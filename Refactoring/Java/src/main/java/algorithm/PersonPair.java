@@ -2,7 +2,7 @@ package algorithm;
 public class PersonPair {
 	public Person older;
 	public Person sameOrYounger;
-	public long millisecondsBetweenBirthDates;
+	private long millisecondsBetweenBirthDates;
 	
 	public PersonPair(Person aPerson, Person anotherPerson) {
 		if (aPerson.getBirthTime() < anotherPerson.getBirthTime()) {
@@ -16,6 +16,10 @@ public class PersonPair {
 	}
 	
 	public PersonPair() {
-		
+		// XXX is this an EmptyPersonPair subclass?
+	}
+	
+	public long getDateDifference() {
+		return millisecondsBetweenBirthDates;
 	}
 }
