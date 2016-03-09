@@ -9,7 +9,7 @@ public class Finder {
 		this.listOfPersons = listOfPersons;
 	}
 	
-	public PersonPair find(FindDistance findDistanceThingy) {
+	public PersonPair find(boolean wantClosest) {
 		List<InitializedPersonPair> listOfPairsOfPersons = new ArrayList<InitializedPersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
@@ -18,24 +18,20 @@ public class Finder {
 			}
 		}
 
-		if (listOfPairsOfPersons.size() < 1) {
+		if (listOfPairsOfPersons.isEmpty()) {
 			return new PersonPair();
 		}
 
 		PersonPair bestAnswer = listOfPairsOfPersons.get(0);
 		for (PersonPair eachResult : listOfPairsOfPersons) {
-			switch (findDistanceThingy) {
-				case CLOSEST :
+			if (wantClosest) {
 					if (eachResult.getDateDifference() < bestAnswer.getDateDifference()) {
 						bestAnswer = eachResult;
 					}
-					break;
-
-				case FURTHEST :
+			} else {
 					if (eachResult.getDateDifference() > bestAnswer.getDateDifference()) {
 						bestAnswer = eachResult;
 					}
-					break;
 			}
 		}
 

@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import algorithm.FindDistance;
 import algorithm.Finder;
 import algorithm.Person;
 import algorithm.PersonPair;
@@ -40,42 +39,42 @@ public class FinderTests {
 	@Test
 	public void emptyListGivesEmptyResults() {
 		PersonPair result = new Finder(makeList())
-				.find(FindDistance.CLOSEST);
+				.find(true);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
 		PersonPair result = new Finder(makeList(sue))
-				.find(FindDistance.CLOSEST);
+				.find(true);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
 		PersonPair result = new Finder(makeList(sue, greg))
-				.find(FindDistance.CLOSEST);
+				.find(true);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
 		PersonPair result = new Finder(makeList(mike, greg))
-				.find(FindDistance.FURTHEST);
+				.find(false);
 		assertResultContainsTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
 		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
-				.find(FindDistance.FURTHEST);
+				.find(false);
 		assertResultContainsTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
 		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
-				.find(FindDistance.CLOSEST);
+				.find(true);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
