@@ -10,11 +10,11 @@ public class Finder {
 	}
 	
 	public PersonPair find(FindDistance findDistanceThingy) {
-		List<PersonPair> listOfPairsOfPersons = new ArrayList<PersonPair>();
+		List<InitializedPersonPair> listOfPairsOfPersons = new ArrayList<InitializedPersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				listOfPairsOfPersons.add(new PersonPair(listOfPersons.get(i), listOfPersons.get(j)));
+				listOfPairsOfPersons.add(new InitializedPersonPair(listOfPersons.get(i), listOfPersons.get(j)));
 			}
 		}
 

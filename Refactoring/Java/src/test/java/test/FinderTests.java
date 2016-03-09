@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import algorithm.PersonPair;
 import algorithm.FindDistance;
 import algorithm.Finder;
 import algorithm.Person;
+import algorithm.PersonPair;
 
 public class FinderTests {
 
