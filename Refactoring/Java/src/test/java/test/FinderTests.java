@@ -39,43 +39,43 @@ public class FinderTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		List<Person> list = makeList();
-		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
+		PersonPair result = new Finder(makeList())
+				.find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		List<Person> list = makeList(sue);
-		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
+		PersonPair result = new Finder(makeList(sue))
+				.find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		List<Person> list = makeList(sue, greg);
-		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
+		PersonPair result = new Finder(makeList(sue, greg))
+				.find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		List<Person> list = makeList(mike, greg);
-		PersonPair result = new Finder(list).find(FindDistance.FURTHEST);
+		PersonPair result = new Finder(makeList(mike, greg))
+				.find(FindDistance.FURTHEST);
 		assertResultContainsTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		List<Person> list = makeList(sue, sarah, mike, greg);
-		PersonPair result = new Finder(list).find(FindDistance.FURTHEST);
+		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
+				.find(FindDistance.FURTHEST);
 		assertResultContainsTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		List<Person> list = makeList(sue, sarah, mike, greg);
-		PersonPair result = new Finder(list).find(FindDistance.CLOSEST);
+		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
+				.find(FindDistance.CLOSEST);
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
