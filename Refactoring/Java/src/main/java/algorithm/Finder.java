@@ -32,14 +32,9 @@ public class Finder {
 
 		PersonPair bestAnswer = listOfPairsOfPersons.get(0);
 		for (PersonPair eachResult : listOfPairsOfPersons) {
-			if (wantClosest) {
-					if (eachResult.getDateDifference() < bestAnswer.getDateDifference()) {
-						bestAnswer = eachResult;
-					}
-			} else {
-					if (eachResult.getDateDifference() > bestAnswer.getDateDifference()) {
-						bestAnswer = eachResult;
-					}
+			if ((wantClosest && eachResult.getDateDifference() < bestAnswer.getDateDifference())
+			|| (!wantClosest && eachResult.getDateDifference() > bestAnswer.getDateDifference())) {
+				bestAnswer = eachResult;
 			}
 		}
 
