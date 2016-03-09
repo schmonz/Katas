@@ -9,7 +9,15 @@ public class Finder {
 		this.listOfPersons = listOfPersons;
 	}
 	
-	public PersonPair find(boolean wantClosest) {
+	public PersonPair findClosest() {
+		return find(true);
+	}
+	
+	public PersonPair findFurthest() {
+		return find(false);
+	}
+	
+	private PersonPair find(boolean wantClosest) {
 		List<InitializedPersonPair> listOfPairsOfPersons = new ArrayList<InitializedPersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {

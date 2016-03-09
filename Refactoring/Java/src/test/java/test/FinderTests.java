@@ -39,42 +39,42 @@ public class FinderTests {
 	@Test
 	public void emptyListGivesEmptyResults() {
 		PersonPair result = new Finder(makeList())
-				.find(true);
+				.findClosest();
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
 		PersonPair result = new Finder(makeList(sue))
-				.find(true);
+				.findClosest();
 		assertResultContainsTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
 		PersonPair result = new Finder(makeList(sue, greg))
-				.find(true);
+				.findClosest();
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
 		PersonPair result = new Finder(makeList(mike, greg))
-				.find(false);
+				.findFurthest();
 		assertResultContainsTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
 		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
-				.find(false);
+				.findFurthest();
 		assertResultContainsTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
 		PersonPair result = new Finder(makeList(sue, sarah, mike, greg))
-				.find(true);
+				.findClosest();
 		assertResultContainsTheseTwoPeople(result, sue, greg);
 	}
 
