@@ -8,21 +8,26 @@ public class Finder {
 	public Finder(List<Person> listOfPersons) {
 		this.listOfPersons = listOfPersons;
 	}
+	
+	private PersonPair putThesePersonsInSomeOrder(Person aPerson, Person anotherPerson) {
+		PersonPair personPair = new PersonPair();
+		if (aPerson.getBirthTime() < anotherPerson.getBirthTime()) {
+			personPair.personOne = aPerson;
+			personPair.personTwo = anotherPerson;
+		} else {
+			personPair.personOne = anotherPerson;
+			personPair.personTwo = aPerson;
+		}
+		personPair.millisecondsBetweenDates = personPair.personTwo.getBirthTime() - personPair.personOne.getBirthTime();
+		return personPair;
+	}
 
 	public PersonPair find(FindDistance findDistanceThingy) {
 		List<PersonPair> listOfPairsOfPersons = new ArrayList<PersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				PersonPair thisPersonPair = new PersonPair();
-				if (listOfPersons.get(i).getBirthTime() < listOfPersons.get(j).getBirthTime()) {
-					thisPersonPair.personOne = listOfPersons.get(i);
-					thisPersonPair.personTwo = listOfPersons.get(j);
-				} else {
-					thisPersonPair.personOne = listOfPersons.get(j);
-					thisPersonPair.personTwo = listOfPersons.get(i);
-				}
-				thisPersonPair.millisecondsBetweenDates = thisPersonPair.personTwo.getBirthTime() - thisPersonPair.personOne.getBirthTime();
+				PersonPair thisPersonPair = putThesePersonsInSomeOrder(listOfPersons.get(i), listOfPersons.get(j));
 				listOfPairsOfPersons.add(thisPersonPair);
 			}
 		}
