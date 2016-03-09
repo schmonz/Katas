@@ -22,23 +22,23 @@ public class Finder {
 			return new PersonPair();
 		}
 
-		PersonPair answer = listOfPairsOfPersons.get(0);
-		for (PersonPair result : listOfPairsOfPersons) {
+		PersonPair bestAnswer = listOfPairsOfPersons.get(0);
+		for (PersonPair eachResult : listOfPairsOfPersons) {
 			switch (findDistanceThingy) {
 				case CLOSEST :
-					if (result.getDateDifference() < answer.getDateDifference()) {
-						answer = result;
+					if (eachResult.getDateDifference() < bestAnswer.getDateDifference()) {
+						bestAnswer = eachResult;
 					}
 					break;
 
 				case FURTHEST :
-					if (result.getDateDifference() > answer.getDateDifference()) {
-						answer = result;
+					if (eachResult.getDateDifference() > bestAnswer.getDateDifference()) {
+						bestAnswer = eachResult;
 					}
 					break;
 			}
 		}
 
-		return answer;
+		return bestAnswer;
 	}
 }
