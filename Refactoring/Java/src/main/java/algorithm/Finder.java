@@ -9,12 +9,12 @@ public class Finder {
 		listOfPersons = p;
 	}
 
-	public F find(FT ft) {
-		List<F> tr = new ArrayList<F>();
+	public PersonPair find(FT ft) {
+		List<PersonPair> tr = new ArrayList<PersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				F r = new F();
+				PersonPair r = new PersonPair();
 				if (listOfPersons.get(i).getBirthDate().getTime() < listOfPersons.get(j).getBirthDate().getTime()) {
 					r.P1 = listOfPersons.get(i);
 					r.P2 = listOfPersons.get(j);
@@ -28,11 +28,11 @@ public class Finder {
 		}
 
 		if (tr.size() < 1) {
-			return new F();
+			return new PersonPair();
 		}
 
-		F answer = tr.get(0);
-		for (F result : tr) {
+		PersonPair answer = tr.get(0);
+		for (PersonPair result : tr) {
 			switch (ft) {
 				case One :
 					if (result.D < answer.D) {
