@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Finder {
-	private final List<Person> listOfPersons;
+	private final PersonList listOfPersons;
 
-	public Finder(List<Person> listOfPersons) {
+	public Finder(PersonList listOfPersons) {
 		this.listOfPersons = listOfPersons;
 	}
 	
