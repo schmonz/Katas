@@ -1,27 +1,17 @@
 package test;
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import algorithm.Finder;
 import algorithm.Person;
+import algorithm.PersonList;
 import algorithm.PersonPair;
 
 public class FinderTests {
 
 	private Person sue, greg, sarah, mike;
-	
-	private List<Person> makeList(Person...persons) {
-		List<Person> list = new ArrayList<Person>();
-		for (Person person : persons) {
-			list.add(person);
-		}
-		return list;
-	}
 	
 	private void assertHasTheseTwoPeople(PersonPair result, Person a, Person b) {
 		assertEquals(a, result.older);
@@ -38,42 +28,42 @@ public class FinderTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		Finder finder = new Finder(makeList());
+		Finder finder = new Finder(new PersonList());
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		Finder finder = new Finder(makeList(sue));
+		Finder finder = new Finder(new PersonList(sue));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		Finder finder = new Finder(makeList(sue, greg));
+		Finder finder = new Finder(new PersonList(sue, greg));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		Finder finder = new Finder(makeList(mike, greg));
+		Finder finder = new Finder(new PersonList(mike, greg));
 		PersonPair result = finder.findFurthest();
 		assertHasTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		Finder finder = new Finder(makeList(sue, sarah, mike, greg));
+		Finder finder = new Finder(new PersonList(sue, sarah, mike, greg));
 		PersonPair result = finder.findFurthest();
 		assertHasTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		Finder finder = new Finder(makeList(sue, sarah, mike, greg));
+		Finder finder = new Finder(new PersonList(sue, sarah, mike, greg));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, sue, greg);
 	}

@@ -10,14 +10,38 @@ public class Finder {
 	}
 	
 	public PersonPair findClosest() {
-		return find(true);
+		PersonPair bestAnswerSoFar = new PersonPair();
+		
+		List<InitializedPersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
+		if (listOfPairsOfPersons.size() > 0) {	
+			bestAnswerSoFar = listOfPairsOfPersons.get(0);
+			for (PersonPair eachResult : listOfPairsOfPersons) {
+				if (eachResult.getDateDifference() < bestAnswerSoFar.getDateDifference()) {
+					bestAnswerSoFar = eachResult;
+				}
+			}
+		}
+
+		return bestAnswerSoFar;
 	}
 	
 	public PersonPair findFurthest() {
-		return find(false);
+		PersonPair bestAnswerSoFar = new PersonPair();
+		
+		List<InitializedPersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
+		if (listOfPairsOfPersons.size() > 0) {	
+			bestAnswerSoFar = listOfPairsOfPersons.get(0);
+			for (PersonPair eachResult : listOfPairsOfPersons) {
+				if (eachResult.getDateDifference() > bestAnswerSoFar.getDateDifference()) {
+					bestAnswerSoFar = eachResult;
+				}
+			}
+		}
+
+		return bestAnswerSoFar;
 	}
 	
-	private PersonPair find(boolean wantClosest) {
+	private List<InitializedPersonPair> generateAllPossiblePairsOfPersons() {
 		List<InitializedPersonPair> listOfPairsOfPersons = new ArrayList<InitializedPersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
@@ -25,19 +49,7 @@ public class Finder {
 				listOfPairsOfPersons.add(new InitializedPersonPair(listOfPersons.get(i), listOfPersons.get(j)));
 			}
 		}
-
-		if (listOfPairsOfPersons.isEmpty()) {
-			return new PersonPair();
-		}
-
-		PersonPair bestAnswer = listOfPairsOfPersons.get(0);
-		for (PersonPair eachResult : listOfPairsOfPersons) {
-			if ((wantClosest && eachResult.getDateDifference() < bestAnswer.getDateDifference())
-			|| (!wantClosest && eachResult.getDateDifference() > bestAnswer.getDateDifference())) {
-				bestAnswer = eachResult;
-			}
-		}
-
-		return bestAnswer;
+		
+		return listOfPairsOfPersons;
 	}
 }
