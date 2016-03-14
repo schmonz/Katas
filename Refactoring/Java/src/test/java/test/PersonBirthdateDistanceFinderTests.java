@@ -13,11 +13,6 @@ public class PersonBirthdateDistanceFinderTests {
 
 	private Person sue, greg, sarah, mike;
 	
-	private void assertHasTheseTwoPeople(PersonPair result, Person a, Person b) {
-		assertEquals(a, result.older);
-		assertEquals(b, result.sameOrYounger);
-	}
-
 	@Before
 	public void setup() {
 		sue		= new Person(1950, 1, 1);
@@ -29,43 +24,47 @@ public class PersonBirthdateDistanceFinderTests {
 	@Test
 	public void emptyListGivesEmptyResults() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList());
-		PersonPair result = finder.findClosest();
-		assertHasTheseTwoPeople(result, null, null);
+		PersonPair pairOfPersons = finder.findClosest();
+		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue));
-		PersonPair result = finder.findClosest();
-		assertHasTheseTwoPeople(result, null, null);
+		PersonPair pairOfPersons = finder.findClosest();
+		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, greg));
-		PersonPair result = finder.findClosest();
-		assertHasTheseTwoPeople(result, sue, greg);
+		PersonPair pairOfPersons = finder.findClosest();
+		assertHasTheseTwoPeople(pairOfPersons, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(mike, greg));
-		PersonPair result = finder.findFurthest();
-		assertHasTheseTwoPeople(result, greg, mike);
+		PersonPair pairOfPersons = finder.findFurthest();
+		assertHasTheseTwoPeople(pairOfPersons, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
-		PersonPair result = finder.findFurthest();
-		assertHasTheseTwoPeople(result, sue, sarah);
+		PersonPair pairOfPersons = finder.findFurthest();
+		assertHasTheseTwoPeople(pairOfPersons, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
 		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
-		PersonPair result = finder.findClosest();
-		assertHasTheseTwoPeople(result, sue, greg);
+		PersonPair pairOfPersons = finder.findClosest();
+		assertHasTheseTwoPeople(pairOfPersons, sue, greg);
 	}
 
+	private void assertHasTheseTwoPeople(PersonPair pairOfPersons, Person a, Person b) {
+		assertEquals(a, pairOfPersons.older);
+		assertEquals(b, pairOfPersons.sameOrYounger);
+	}
 }
