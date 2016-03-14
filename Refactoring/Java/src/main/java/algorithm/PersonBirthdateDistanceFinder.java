@@ -10,13 +10,13 @@ public class PersonBirthdateDistanceFinder {
 	}
 	
 	public PersonPair findClosest() {
-		final int WANT_SMALLEST_DATE_DIFFERENCE = -1;
-		return findMostest(WANT_SMALLEST_DATE_DIFFERENCE);
+		final int WANT_SMALLER_DATE_DIFFERENCE = -1;
+		return findMostest(WANT_SMALLER_DATE_DIFFERENCE);
 	}
 
 	public PersonPair findFurthest() {
-		final int WANT_LARGEST_DATE_DIFFERENCE = 1;
-		return findMostest(WANT_LARGEST_DATE_DIFFERENCE);
+		final int WANT_LARGER_DATE_DIFFERENCE = 1;
+		return findMostest(WANT_LARGER_DATE_DIFFERENCE);
 	}
 	
 	private PersonPair findMostest(int desiredResultOfCompareTo) {
