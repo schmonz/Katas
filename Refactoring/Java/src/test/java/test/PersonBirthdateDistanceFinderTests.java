@@ -4,12 +4,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import algorithm.Finder;
+import algorithm.PersonBirthdateDistanceFinder;
 import algorithm.Person;
 import algorithm.PersonList;
 import algorithm.PersonPair;
 
-public class FinderTests {
+public class PersonBirthdateDistanceFinderTests {
 
 	private Person sue, greg, sarah, mike;
 	
@@ -28,42 +28,42 @@ public class FinderTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		Finder finder = new Finder(new PersonList());
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList());
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		Finder finder = new Finder(new PersonList(sue));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		Finder finder = new Finder(new PersonList(sue, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, greg));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, sue, greg);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		Finder finder = new Finder(new PersonList(mike, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(mike, greg));
 		PersonPair result = finder.findFurthest();
 		assertHasTheseTwoPeople(result, greg, mike);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		Finder finder = new Finder(new PersonList(sue, sarah, mike, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
 		PersonPair result = finder.findFurthest();
 		assertHasTheseTwoPeople(result, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		Finder finder = new Finder(new PersonList(sue, sarah, mike, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
 		PersonPair result = finder.findClosest();
 		assertHasTheseTwoPeople(result, sue, greg);
 	}

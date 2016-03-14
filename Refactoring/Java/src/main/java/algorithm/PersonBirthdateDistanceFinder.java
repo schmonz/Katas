@@ -2,10 +2,10 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Finder {
+public class PersonBirthdateDistanceFinder {
 	private final PersonList listOfPersons;
 
-	public Finder(PersonList listOfPersons) {
+	public PersonBirthdateDistanceFinder(PersonList listOfPersons) {
 		this.listOfPersons = listOfPersons;
 	}
 	
