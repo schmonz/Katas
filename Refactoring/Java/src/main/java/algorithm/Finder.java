@@ -10,46 +10,46 @@ public class Finder {
 	}
 	
 	public PersonPair findClosest() {
-		PersonPair bestAnswerSoFar = new PersonPair();
-		
-		List<InitializedPersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
-		if (listOfPairsOfPersons.size() > 0) {	
-			bestAnswerSoFar = listOfPairsOfPersons.get(0);
-			for (PersonPair eachResult : listOfPairsOfPersons) {
-				if (eachResult.getDateDifference() < bestAnswerSoFar.getDateDifference()) {
-					bestAnswerSoFar = eachResult;
-				}
-			}
-		}
-
-		return bestAnswerSoFar;
+		final int WANT_SMALLEST_DATE_DIFFERENCE = -1;
+		return findMostest(WANT_SMALLEST_DATE_DIFFERENCE);
 	}
-	
+
 	public PersonPair findFurthest() {
+		final int WANT_LARGEST_DATE_DIFFERENCE = 1;
+		return findMostest(WANT_LARGEST_DATE_DIFFERENCE);
+	}
+	
+	private PersonPair findMostest(int desiredResultOfCompareTo) {
 		PersonPair bestAnswerSoFar = new PersonPair();
 		
-		List<InitializedPersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
+		List<PersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
 		if (listOfPairsOfPersons.size() > 0) {	
 			bestAnswerSoFar = listOfPairsOfPersons.get(0);
 			for (PersonPair eachResult : listOfPairsOfPersons) {
-				if (eachResult.getDateDifference() > bestAnswerSoFar.getDateDifference()) {
-					bestAnswerSoFar = eachResult;
-				}
+				bestAnswerSoFar = betterOfTwoPairs(desiredResultOfCompareTo, eachResult, bestAnswerSoFar);
 			}
 		}
 
 		return bestAnswerSoFar;
 	}
 	
-	private List<InitializedPersonPair> generateAllPossiblePairsOfPersons() {
-		List<InitializedPersonPair> listOfPairsOfPersons = new ArrayList<InitializedPersonPair>();
+	private List<PersonPair> generateAllPossiblePairsOfPersons() {
+		List<PersonPair> listOfPairsOfPersons = new ArrayList<PersonPair>();
 
 		for (int i = 0; i < listOfPersons.size() - 1; i++) {
 			for (int j = i + 1; j < listOfPersons.size(); j++) {
-				listOfPairsOfPersons.add(new InitializedPersonPair(listOfPersons.get(i), listOfPersons.get(j)));
+				listOfPairsOfPersons.add(new PersonPair(listOfPersons.get(i), listOfPersons.get(j)));
 			}
 		}
 		
 		return listOfPairsOfPersons;
+	}
+	
+	private PersonPair betterOfTwoPairs(int desiredResultOfCompareTo, PersonPair onePair, PersonPair anotherPair) {
+		if (desiredResultOfCompareTo == onePair.compareTo(anotherPair)) {
+			return onePair;
+		} else {
+			return anotherPair;
+		}
 	}
 }
