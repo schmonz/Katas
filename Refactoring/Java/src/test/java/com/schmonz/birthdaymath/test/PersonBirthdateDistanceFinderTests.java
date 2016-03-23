@@ -67,7 +67,7 @@ public class PersonBirthdateDistanceFinderTests {
 	}
 
 	private void assertHasTheseTwoPeople(PersonPair pairOfPersons, Person a, Person b) {
-		assertEquals(a, pairOfPersons.older);
-		assertEquals(b, pairOfPersons.sameOrYounger);
+		assertEquals(a, pairOfPersons.getOlder());
+		assertEquals(b, pairOfPersons.getSameOrYounger());
 	}
 }
