@@ -1,6 +1,7 @@
 package com.schmonz.birthdaymath;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class BirthdateDistance {
@@ -10,24 +11,50 @@ public class BirthdateDistance {
 		this.listOfPersons = listOfPersons;
 	}
 
+	public class ClosestPairComparator implements Comparator<PersonPair> {
+		@Override
+		public int compare(PersonPair o1, PersonPair o2) {
+			if (o1.getDateDifference() < o2.getDateDifference()) {
+				return -1;
+			} else if (o1.getDateDifference() > o2.getDateDifference()) {
+				return 1;
+			} else {
+				return 0;
+			}
+			// XXX o1.getDateDifference() - o2.getDateDifference()
+
+		}
+	}
+
+	public class FurthestPairComparator implements Comparator<PersonPair> {
+		@Override
+		public int compare(PersonPair o1, PersonPair o2) {
+			if (o1.getDateDifference() < o2.getDateDifference()) {
+				return 1;
+			} else if (o1.getDateDifference() > o2.getDateDifference()) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+	}
+
 	public PersonPair findClosest() {
-		final int WANT_SMALLER_DATE_DIFFERENCE = -1;
-		return findMostest(WANT_SMALLER_DATE_DIFFERENCE);
+		return findMostest(new ClosestPairComparator());
 	}
 
 	public PersonPair findFurthest() {
-		final int WANT_LARGER_DATE_DIFFERENCE = 1;
-		return findMostest(WANT_LARGER_DATE_DIFFERENCE);
+		return findMostest(new FurthestPairComparator());
 	}
 
-	private PersonPair findMostest(int desiredResultOfCompareTo) {
+	private PersonPair findMostest(Comparator<PersonPair> pairComparator) {
 		PersonPair bestAnswerSoFar = new PersonPair();
 
 		List<PersonPair> listOfPairsOfPersons = generateAllPossiblePairsOfPersons();
 		if (listOfPairsOfPersons.size() > 0) {
 			bestAnswerSoFar = listOfPairsOfPersons.get(0);
 			for (PersonPair eachResult : listOfPairsOfPersons) {
-				bestAnswerSoFar = betterOfTwoPairs(desiredResultOfCompareTo, eachResult, bestAnswerSoFar);
+				bestAnswerSoFar = betterOfTwoPairs(pairComparator, eachResult, bestAnswerSoFar);
 			}
 		}
 
@@ -46,8 +73,9 @@ public class BirthdateDistance {
 		return listOfPairsOfPersons;
 	}
 
-	private PersonPair betterOfTwoPairs(int desiredResultOfCompareTo, PersonPair onePair, PersonPair anotherPair) {
-		if (desiredResultOfCompareTo == new PersonPairComparator().compare(onePair, anotherPair)) {
+	private PersonPair betterOfTwoPairs(Comparator<PersonPair> pairComparator, PersonPair onePair,
+			PersonPair anotherPair) {
+		if (-1 == pairComparator.compare(onePair, anotherPair)) {
 			return onePair;
 		} else {
 			return anotherPair;
