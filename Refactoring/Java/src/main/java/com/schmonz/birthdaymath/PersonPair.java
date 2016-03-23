@@ -1,4 +1,4 @@
-package algorithm;
+package com.schmonz.birthdaymath;
 
 public class PersonPair implements Comparable<PersonPair> {
 	public Person older;

@@ -1,4 +1,4 @@
-package algorithm;
+package com.schmonz.birthdaymath;
 
 import java.util.Calendar;
 

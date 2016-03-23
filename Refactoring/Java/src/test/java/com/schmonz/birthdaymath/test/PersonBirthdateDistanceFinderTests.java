@@ -1,14 +1,14 @@
-package test;
+package com.schmonz.birthdaymath.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import algorithm.Person;
-import algorithm.PersonBirthdateDistanceFinder;
-import algorithm.PersonList;
-import algorithm.PersonPair;
+import com.schmonz.birthdaymath.Person;
+import com.schmonz.birthdaymath.PersonBirthdateDistanceFinder;
+import com.schmonz.birthdaymath.PersonList;
+import com.schmonz.birthdaymath.PersonPair;
 
 public class PersonBirthdateDistanceFinderTests {
 
