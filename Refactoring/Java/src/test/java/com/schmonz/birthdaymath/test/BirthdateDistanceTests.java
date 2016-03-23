@@ -24,45 +24,39 @@ public class BirthdateDistanceTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		BirthdateDistance finder = new BirthdateDistance(new PersonList());
-		PersonPair pairOfPersons = finder.findClosest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList()).findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		BirthdateDistance finder = new BirthdateDistance(new PersonList(oldest));
-		PersonPair pairOfPersons = finder.findClosest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList(oldest)).findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		BirthdateDistance finder = new BirthdateDistance(new PersonList(oldest, secondOldest));
-		PersonPair pairOfPersons = finder.findClosest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList(oldest, secondOldest)).findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, secondOldest);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		BirthdateDistance finder = new BirthdateDistance(new PersonList(secondYoungest, secondOldest));
-		PersonPair pairOfPersons = finder.findFurthest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList(secondYoungest, secondOldest)).findFurthest();
 		assertHasTheseTwoPeople(pairOfPersons, secondOldest, secondYoungest);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		BirthdateDistance finder = new BirthdateDistance(
-				new PersonList(oldest, youngest, secondYoungest, secondOldest));
-		PersonPair pairOfPersons = finder.findFurthest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList(oldest, youngest, secondYoungest, secondOldest))
+				.findFurthest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, youngest);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		BirthdateDistance finder = new BirthdateDistance(
-				new PersonList(oldest, youngest, secondYoungest, secondOldest));
-		PersonPair pairOfPersons = finder.findClosest();
+		PersonPair pairOfPersons = new BirthdateDistance(new PersonList(oldest, youngest, secondYoungest, secondOldest))
+				.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, secondOldest);
 	}
 
