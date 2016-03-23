@@ -1,6 +1,7 @@
 package com.schmonz.birthdaymath;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -75,10 +76,8 @@ public class BirthdateDistance {
 
 	private PersonPair betterOfTwoPairs(Comparator<PersonPair> pairComparator, PersonPair onePair,
 			PersonPair anotherPair) {
-		if (-1 == pairComparator.compare(onePair, anotherPair)) {
-			return onePair;
-		} else {
-			return anotherPair;
-		}
+		PersonPair[] theseTwo = new PersonPair[] { onePair, anotherPair };
+		Arrays.sort(theseTwo, pairComparator);
+		return theseTwo[0];
 	}
 }
