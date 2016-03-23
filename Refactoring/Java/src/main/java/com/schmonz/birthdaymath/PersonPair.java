@@ -1,6 +1,6 @@
 package com.schmonz.birthdaymath;
 
-public class PersonPair implements Comparable<PersonPair> {
+public class PersonPair {
 	private Person older;
 	private Person sameOrYounger;
 	private long millisecondsBetweenBirthDates;
@@ -29,16 +29,5 @@ public class PersonPair implements Comparable<PersonPair> {
 
 	public Person getSameOrYounger() {
 		return sameOrYounger;
-	}
-
-	@Override
-	public int compareTo(PersonPair arg0) {
-		if (this.getDateDifference() < arg0.getDateDifference()) {
-			return -1;
-		} else if (this.getDateDifference() > arg0.getDateDifference()) {
-			return 1;
-		} else {
-			return 0;
-		}
 	}
 }

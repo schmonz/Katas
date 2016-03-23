@@ -47,7 +47,7 @@ public class BirthdateDistance {
 	}
 
 	private PersonPair betterOfTwoPairs(int desiredResultOfCompareTo, PersonPair onePair, PersonPair anotherPair) {
-		if (desiredResultOfCompareTo == onePair.compareTo(anotherPair)) {
+		if (desiredResultOfCompareTo == new PersonPairComparator().compare(onePair, anotherPair)) {
 			return onePair;
 		} else {
 			return anotherPair;
