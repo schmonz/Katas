@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.schmonz.birthdaymath.Person;
-import com.schmonz.birthdaymath.PersonBirthdateDistanceFinder;
+import com.schmonz.birthdaymath.BirthdateDistance;
 import com.schmonz.birthdaymath.PersonList;
 import com.schmonz.birthdaymath.PersonPair;
 
-public class PersonBirthdateDistanceFinderTests {
+public class BirthdateDistanceTests {
 
 	private Person oldest, secondOldest, youngest, secondYoungest;
 
@@ -24,35 +24,35 @@ public class PersonBirthdateDistanceFinderTests {
 
 	@Test
 	public void emptyListGivesEmptyResults() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList());
+		BirthdateDistance finder = new BirthdateDistance(new PersonList());
 		PersonPair pairOfPersons = finder.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void onePersonGivesEmptyResults() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(oldest));
+		BirthdateDistance finder = new BirthdateDistance(new PersonList(oldest));
 		PersonPair pairOfPersons = finder.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, null, null);
 	}
 
 	@Test
 	public void twoPeopleGivesClosestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(oldest, secondOldest));
+		BirthdateDistance finder = new BirthdateDistance(new PersonList(oldest, secondOldest));
 		PersonPair pairOfPersons = finder.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, secondOldest);
 	}
 
 	@Test
 	public void twoPeopleGivesFurthestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(secondYoungest, secondOldest));
+		BirthdateDistance finder = new BirthdateDistance(new PersonList(secondYoungest, secondOldest));
 		PersonPair pairOfPersons = finder.findFurthest();
 		assertHasTheseTwoPeople(pairOfPersons, secondOldest, secondYoungest);
 	}
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(
+		BirthdateDistance finder = new BirthdateDistance(
 				new PersonList(oldest, youngest, secondYoungest, secondOldest));
 		PersonPair pairOfPersons = finder.findFurthest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, youngest);
@@ -60,7 +60,7 @@ public class PersonBirthdateDistanceFinderTests {
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(
+		BirthdateDistance finder = new BirthdateDistance(
 				new PersonList(oldest, youngest, secondYoungest, secondOldest));
 		PersonPair pairOfPersons = finder.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, oldest, secondOldest);

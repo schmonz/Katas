@@ -3,10 +3,10 @@ package com.schmonz.birthdaymath;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonBirthdateDistanceFinder {
+public class BirthdateDistance {
 	private final PersonList listOfPersons;
 
-	public PersonBirthdateDistanceFinder(PersonList listOfPersons) {
+	public BirthdateDistance(PersonList listOfPersons) {
 		this.listOfPersons = listOfPersons;
 	}
 
