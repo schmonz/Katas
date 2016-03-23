@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.schmonz.birthdaymath.Person;
 import com.schmonz.birthdaymath.BirthdateDistance;
+import com.schmonz.birthdaymath.Person;
 import com.schmonz.birthdaymath.PersonList;
 import com.schmonz.birthdaymath.PersonPair;
 
 public class BirthdateDistanceTests {
 
-	private Person oldest, secondOldest, youngest, secondYoungest;
+	private Person oldest, secondOldest, secondYoungest, youngest;
 
 	@Before
 	public void setup() {
 		oldest = new Person(1950, 1, 1);
 		secondOldest = new Person(1952, 6, 1);
-		youngest = new Person(1982, 1, 1);
 		secondYoungest = new Person(1979, 1, 1);
+		youngest = new Person(1982, 1, 1);
 	}
 
 	@Test
