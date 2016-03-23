@@ -1,24 +1,25 @@
 package test;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import algorithm.PersonBirthdateDistanceFinder;
 import algorithm.Person;
+import algorithm.PersonBirthdateDistanceFinder;
 import algorithm.PersonList;
 import algorithm.PersonPair;
 
 public class PersonBirthdateDistanceFinderTests {
 
 	private Person sue, greg, sarah, mike;
-	
+
 	@Before
 	public void setup() {
-		sue		= new Person(1950, 1, 1);
-		greg	= new Person(1952, 6, 1);
-		sarah	= new Person(1982, 1, 1);
-		mike	= new Person(1979, 1, 1);
+		sue = new Person(1950, 1, 1);
+		greg = new Person(1952, 6, 1);
+		sarah = new Person(1982, 1, 1);
+		mike = new Person(1979, 1, 1);
 	}
 
 	@Test
@@ -51,14 +52,16 @@ public class PersonBirthdateDistanceFinderTests {
 
 	@Test
 	public void fourPeopleGivesFurthestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(
+				new PersonList(sue, sarah, mike, greg));
 		PersonPair pairOfPersons = finder.findFurthest();
 		assertHasTheseTwoPeople(pairOfPersons, sue, sarah);
 	}
 
 	@Test
 	public void fourPeopleGivesClosestTwo() {
-		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(new PersonList(sue, sarah, mike, greg));
+		PersonBirthdateDistanceFinder finder = new PersonBirthdateDistanceFinder(
+				new PersonList(sue, sarah, mike, greg));
 		PersonPair pairOfPersons = finder.findClosest();
 		assertHasTheseTwoPeople(pairOfPersons, sue, greg);
 	}

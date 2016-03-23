@@ -4,7 +4,7 @@ public class PersonPair implements Comparable<PersonPair> {
 	public Person older;
 	public Person sameOrYounger;
 	protected long millisecondsBetweenBirthDates;
-	
+
 	public PersonPair() {
 	}
 
@@ -18,11 +18,11 @@ public class PersonPair implements Comparable<PersonPair> {
 		}
 		this.millisecondsBetweenBirthDates = this.sameOrYounger.getBirthTime() - this.older.getBirthTime();
 	}
-	
+
 	public long getDateDifference() {
 		return millisecondsBetweenBirthDates;
 	}
-	
+
 	@Override
 	public int compareTo(PersonPair arg0) {
 		if (this.getDateDifference() < arg0.getDateDifference()) {

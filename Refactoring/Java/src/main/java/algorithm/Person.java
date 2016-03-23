@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Person {
 	private long birthTime;
-	
+
 	public Person(int year, int monthIndexedFrom1, int dayIndexedFrom1) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, year);
@@ -17,4 +17,3 @@ public class Person {
 		return birthTime;
 	}
 }
-
