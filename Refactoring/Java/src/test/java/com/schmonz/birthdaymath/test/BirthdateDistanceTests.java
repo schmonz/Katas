@@ -2,6 +2,8 @@ package com.schmonz.birthdaymath.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.GregorianCalendar;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,10 +18,10 @@ public class BirthdateDistanceTests {
 
 	@Before
 	public void setup() {
-		oldest = new Person(1950, 1, 1);
-		secondOldest = new Person(1952, 6, 1);
-		secondYoungest = new Person(1979, 1, 1);
-		youngest = new Person(1982, 1, 1);
+		oldest = new Person(new GregorianCalendar(1950, 0, 1));
+		secondOldest = new Person(new GregorianCalendar(1952, 5, 1));
+		secondYoungest = new Person(new GregorianCalendar(1979, 0, 1));
+		youngest = new Person(new GregorianCalendar(1982, 0, 1));
 	}
 
 	@Test
