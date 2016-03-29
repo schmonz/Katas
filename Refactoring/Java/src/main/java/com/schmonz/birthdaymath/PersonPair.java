@@ -1,5 +1,8 @@
 package com.schmonz.birthdaymath;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonPair {
 	private Person older;
 	private Person sameOrYounger;
@@ -23,11 +26,10 @@ public class PersonPair {
 		return millisecondsBetweenBirthDates;
 	}
 
-	public Person getOlder() {
-		return older;
-	}
-
-	public Person getSameOrYounger() {
-		return sameOrYounger;
+	public List<Person> getPeople() {
+		List<Person> people = new ArrayList<Person>();
+		people.add(older);
+		people.add(sameOrYounger);
+		return people;
 	}
 }

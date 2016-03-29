@@ -3,6 +3,7 @@ package com.schmonz.birthdaymath.test;
 import static org.junit.Assert.assertEquals;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +64,8 @@ public class BirthdateDistanceTests {
 	}
 
 	private void assertHasTheseTwoPeople(PersonPair pairOfPersons, Person a, Person b) {
-		assertEquals(a, pairOfPersons.getOlder());
-		assertEquals(b, pairOfPersons.getSameOrYounger());
+		List<Person> assumingSorted = pairOfPersons.getPeople();
+		assertEquals(a, assumingSorted.get(0));
+		assertEquals(b, assumingSorted.get(1));
 	}
 }
