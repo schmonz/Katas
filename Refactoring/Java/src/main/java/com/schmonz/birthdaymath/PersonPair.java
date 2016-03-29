@@ -4,32 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonPair {
-	private Person older;
-	private Person sameOrYounger;
-	private long millisecondsBetweenBirthDates;
+	private List<Person> people;
 
 	public PersonPair() {
 	}
 
 	public PersonPair(Person aPerson, Person anotherPerson) {
-		if (aPerson.getBirthTime() < anotherPerson.getBirthTime()) {
-			this.older = aPerson;
-			this.sameOrYounger = anotherPerson;
-		} else {
-			this.older = anotherPerson;
-			this.sameOrYounger = aPerson;
-		}
-		this.millisecondsBetweenBirthDates = this.sameOrYounger.getBirthTime() - this.older.getBirthTime();
+		people = new ArrayList<Person>();
+		people.add(aPerson);
+		people.add(anotherPerson);
 	}
 
 	public long getDateDifference() {
-		return millisecondsBetweenBirthDates;
+		return Math.abs(people.get(0).getBirthTime() - people.get(1).getBirthTime());
 	}
 
 	public List<Person> getPeople() {
-		List<Person> people = new ArrayList<Person>();
-		people.add(older);
-		people.add(sameOrYounger);
 		return people;
 	}
 }
