@@ -1,12 +1,11 @@
 package com.schmonz.birthdaymath.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import java.util.GregorianCalendar;
-import java.util.List;
 
+import org.assertj.core.util.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -66,21 +65,12 @@ public class BirthdateDistanceTests {
 	}
 
 	private void assertHasTheseTwoPeople(PersonPair pairOfPersons, Person a, Person b) {
-		List<Person> assumingSorted;
-		if (null == pairOfPersons) {
-			fail("null PersonPair");
+		if (null == a || null == b) {
+			assertNull(a);
+			assertNull(b);
 		} else {
-			assumingSorted = pairOfPersons.getPeople();
-			if (null == a || null == b) {
-				assertNull(a);
-				assertNull(b);
-			} else if (a.equals(assumingSorted.get(0)) && b.equals(assumingSorted.get(1))) {
-				assertEquals("sorted as expected!", 77, 77);
-			} else if (b.equals(assumingSorted.get(0)) && a.equals(assumingSorted.get(1))) {
-				assertEquals("sorted backwards but good!", 88, 88);
-			} else {
-				fail("not right");
-			}
+			assertThat(Sets.newLinkedHashSet(a, b)).containsExactlyInAnyOrder(pairOfPersons.getPeople().get(0),
+					pairOfPersons.getPeople().get(1));
 		}
 	}
 }
